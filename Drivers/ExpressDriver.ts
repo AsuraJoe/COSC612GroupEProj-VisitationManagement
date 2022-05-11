@@ -1,9 +1,9 @@
 import cors from "cors";
 import helmet from "helmet";
 import express from "express";
-import cookieParser from"cookie-parser";
+// import cookieParser from"cookie-parser";
 
-const version = require('../../package.json').version
+const version = require('../package.json').version
 
 export class ExpressDriver{
     public static app = express();
@@ -16,7 +16,7 @@ export class ExpressDriver{
         this.app.use(helmet());
         this.app.use(express.json());
         this.app.use(cors({ origin: true, credentials: true }))
-        this.app.use(cookieParser());
+        // this.app.use(cookieParser());
         
         this.initServer();
         return this.app;
