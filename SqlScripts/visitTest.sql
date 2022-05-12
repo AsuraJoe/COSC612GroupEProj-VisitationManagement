@@ -11,4 +11,4 @@
 -- JOIN staff AS d ON v.doctor_id = d.staff_id
 -- ORDER BY visit_date DESC
 
-SELECT * FROM _queue
+SELECT * FROM _queue;

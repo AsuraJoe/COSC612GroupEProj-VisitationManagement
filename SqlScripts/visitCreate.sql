@@ -1,57 +1,71 @@
-create table if not exists staff (
-    staff_id VARCHAR(20) not null,
-    staff_name VARCHAR(20),
-    job VARCHAR(20),
-    PRIMARY KEY (staff_id)
+CREATE TABLE IF NOT EXISTS employee (
+    employee_id serial PRIMARY KEY,
+    first_name VARCHAR(50),
+    middle_initial CHAR,
+    last_name VARCHAR(50),
+    position VARCHAR(20)
 );
 
-create table if not EXISTS patients (
-    patient_id VARCHAR(20) not null,
-    patient_name VARCHAR(20),
-    PRIMARY KEY (patient_id)
+CREATE TABLE IF NOT EXISTS patient (
+    patient_id serial PRIMARY KEY,
+    first_name VARCHAR(50),
+    middle_initial CHAR,
+    last_name VARCHAR(50)
 );
 
-CREATE TABLE IF NOT EXISTS visitation (
-    visit_id VARCHAR(20) not null,
-    visit_date TIMESTAMP,
+CREATE TABLE IF NOT EXISTS visit (
+    visit_id serial PRIMARY KEY,
+    patient_id INT NOT NULL,
+    visit_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     status VARCHAR(30),
-    patient_id VARCHAR(20) not null,
-    nurse_id VARCHAR(20),
-    doctor_id VARCHAR(20),
-    PRIMARY KEY (visit_id),
-    FOREIGN KEY (patient_id) REFERENCES patients(patient_id),
-    FOREIGN KEY (nurse_id) REFERENCES staff(staff_id),
-    FOREIGN KEY (doctor_id) REFERENCES staff(staff_id)
+    nurse_id INT,
+    doctor_id INT,
+    visit_reason VARCHAR(200),
+    symptoms VARCHAR(500),
+    visit_summary VARCHAR,
+    created_by INT,
+
+    FOREIGN KEY (patient_id) REFERENCES patient(patient_id),
+    FOREIGN KEY (nurse_id) REFERENCES employee(employee_id),
+    FOREIGN KEY (doctor_id) REFERENCES employee(employee_id),
+    FOREIGN KEY (created_by) REFERENCES employee(employee_id)
 );
 
 CREATE TABLE IF NOT EXISTS vitals (
-    patient_id VARCHAR(20) not null,
-    visit_id VARCHAR(20) not null,
-    systolic int,
-    diastolic int,
-    pulse int,
-    temp float,
-    PRIMARY KEY (patient_id,visit_id),
-    FOREIGN KEY(patient_id) REFERENCES patients(patient_id),
-    FOREIGN KEY (visit_id) REFERENCES visitation(visit_id)
+    vitals_id serial PRIMARY KEY,
+    patient_id INT not null,
+    visit_id INT not null,
+    systolic INT,
+    diastolic INT,
+    pulse FLOAT,
+    temp FLOAT,
+    blood_oxygen INT,
+    created_by INT,
+    date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY(patient_id) REFERENCES patient(patient_id),
+    FOREIGN KEY (visit_id) REFERENCES visit(visit_id),
+    FOREIGN KEY (created_by) REFERENCES employee(employee_id)
 );
 
 CREATE TABLE IF NOT EXISTS diagnosis(
-    patient_id VARCHAR(20),
-    visit_id VARCHAR(20),
-    doctor_id VARCHAR (20),
-    details VARCHAR(50),
-    FOREIGN KEY(patient_id) REFERENCES patients(patient_id),
-    FOREIGN KEY (visit_id) REFERENCES visitation(visit_id),
-    FOREIGN KEY (doctor_id) REFERENCES staff(staff_id)
+    diagnosis_id serial PRIMARY KEY,
+    icd19_code VARCHAR(10),
+    visit_id INT NOT NULL,
+    created_by INT,
+    date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (visit_id) REFERENCES visit(visit_id),
+    FOREIGN KEY (created_by) REFERENCES employee(employee_id)
 );
 
-CREATE TABLE IF NOT EXISTS bill(
-    bill_id VARCHAR(20),
-    patient_id VARCHAR(20),
-    accountant_id VARCHAR(20),
-    cost FLOAT,
-    PRIMARY KEY (bill_id),
-    FOREIGN KEY(patient_id) REFERENCES patients(patient_id),
-    FOREIGN KEY (accountant_id) REFERENCES staff(staff_id)
-);
+-- CREATE TABLE IF NOT EXISTS visit_billing(
+--     visit_billing_id serial PRIMARY KEY ,
+--     visit_id INT NOT NULL,
+--     patient_id INT,
+--     created_by INT,
+--     cost FLOAT,
+--     FOREIGN KEY (visit_id)
+--     FOREIGN KEY (patient_id) REFERENCES patient(patient_id),
+--     FOREIGN KEY (accountant_id) REFERENCES employee(employee_id)
+-- );
