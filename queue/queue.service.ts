@@ -1,4 +1,4 @@
-const db=require('../_helpers/db');
+const dbQueue=require('../_helpers/db');
 
 module.exports= {
     getQueue
@@ -6,6 +6,6 @@ module.exports= {
 
 //Funtion to get the queue
 async function getQueue() {
-    const {rows} = await db.query('SELECT * FROM _queue');
+    const {rows} = await dbQueue.query('SELECT * FROM _queue');
     return rows;
 }

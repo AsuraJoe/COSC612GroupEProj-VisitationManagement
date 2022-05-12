@@ -1,16 +1,16 @@
-import express, { NextFunction } from "express";
+import express from "express";
 
 const queueService = require('./queue.service');
 const router = express.Router();
 
 //routes
-router.get('/', getQueue);
+router.get('/', getAll);
 
 
 module.exports=router;
 
 //api functions
-function getQueue(req, res, next){
+function getAll(req, res, next){
     queueService.getQueue().
         then(queue => res.json(queue)).
         catch(err=> next(err));

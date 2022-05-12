@@ -19,6 +19,7 @@ export class ExpressDriver{
         // this.app.use(cookieParser());
         
         this.app.use('/queue', require('../queue/queue.controller'));
+        this.app.use('/visit', require('../visit/visit.controller'));
         this.initServer();
         return this.app;
 
