@@ -4,7 +4,7 @@ import express from "express";
 // import cookieParser from"cookie-parser";
 
 const version = require('../package.json').version
-
+const errorHandler = require('../_helpers/error-handler');
 export class ExpressDriver{
     public static app = express();
     
@@ -18,8 +18,12 @@ export class ExpressDriver{
         this.app.use(cors({ origin: true, credentials: true }))
         // this.app.use(cookieParser());
         
+        this.app.use('/queue', require('../queue/queue.controller'));
         this.initServer();
         return this.app;
+
+        //error handler
+        this.app.use(errorHandler);
     }
 
     private static initServer() {

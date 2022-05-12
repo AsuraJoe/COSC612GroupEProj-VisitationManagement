@@ -1,0 +1,7 @@
+{
+    "compilerOptions": {
+        "esModuleInterop": true,
+        "noImplicitAny": false,
+        "target": "es6"
+    }
+}

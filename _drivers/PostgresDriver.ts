@@ -1,5 +1,5 @@
-import { Pool } from 'pg';
-import * as dotenv from 'dotenv';
+import { Pool } from "pg";
+import * as dotenv from "dotenv";
 //import { ServiceError, ServiceErrorReason } from '../shared/types/Errors';
 
 dotenv.config();

@@ -1,4 +1,4 @@
-CREATE OR ALTER VIEW _queue 
+CREATE VIEW _queue 
 AS (
     SELECT p.patient_id as patient_id, CONCAT(p.first_name, ' ', p.middle_initial,' ', p.last_name) AS patient_name,
 v.visit_date AS visit_date, CONCAT(n.first_name, ' ', n.middle_initial,' ', n.last_name) AS nurse, 

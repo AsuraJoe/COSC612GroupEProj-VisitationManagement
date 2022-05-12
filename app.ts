@@ -1,7 +1,7 @@
-import { ExpressDriver } from './drivers/ExpressDriver';
+import { ExpressDriver } from './_drivers/ExpressDriver';
 import * as http from 'http';
 import * as dotenv from 'dotenv';
-import { PostgresDriver } from './drivers/PostgresDriver';
+// import { PostgresDriver } from './_drivers/PostgresDriver';
 dotenv.config()
 
 const app = ExpressDriver.build();
@@ -13,11 +13,12 @@ server.listen(PORT,async () => {
     console.log(`VisitationAPI started at http://localhost:${ PORT }`);
 });
 
-server.on("listening", async () =>{
-    try {
-        await PostgresDriver.connect();
-        console.log("DB Connection Successful!");
-    } catch (err) {
-        console.log(`Unable to connect to database ${err}`)
-    }
-});
+// server.on("listening", async () =>{
+//     try {
+//         await PostgresDriver.connect();
+//         console.log("DB Connection Successful!");
+
+//     } catch (err) {
+//         console.log(`Unable to connect to database ${err}`)
+//     }
+// });
