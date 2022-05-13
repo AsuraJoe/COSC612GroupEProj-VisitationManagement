@@ -5,7 +5,7 @@ const vitals = require('yesql')('/COSC612GroupEProj-VisitationManagement/SqlScri
 module.exports= {
     getVitals,
     createVitals,
-    delete: _delete
+    delete: deleteVitals
 };
 
 //Function to get all the vitals
@@ -23,6 +23,6 @@ async function createVitals(vitalsParam) {
 };
 
 //Function to delete a vitals
-async function _delete (vitalsParam) {
+async function deleteVitals (vitalsParam) {
     await dbVitals.query(`DELETE FROM vitals WHERE vitals_id =${vitalsParam.vitals_id}`);
 }
