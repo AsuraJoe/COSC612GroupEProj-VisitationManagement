@@ -5,6 +5,9 @@
         "target": "es6",
         "lib": ["es6"],
         "baseUrl": ".",
+        "moduleResolution": "node",
+        "allowJs": true,
+        "strict": true,
         // "paths": {
         //     "*": [
         //         "node_modules/*"
