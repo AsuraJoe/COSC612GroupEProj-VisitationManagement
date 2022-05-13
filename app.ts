@@ -1,6 +1,6 @@
 import { ExpressDriver } from './_drivers/ExpressDriver';
 import * as http from 'http';
-import * as dotenv from 'dotenv';
+const dotenv=require('dotenv');
 // import { PostgresDriver } from './_drivers/PostgresDriver';
 dotenv.config()
 

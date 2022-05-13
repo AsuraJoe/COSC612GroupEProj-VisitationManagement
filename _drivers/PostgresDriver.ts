@@ -1,5 +1,5 @@
 import { Pool } from "pg";
-import * as dotenv from "dotenv";
+const dotenv=require('dotenv');
 //import { ServiceError, ServiceErrorReason } from '../shared/types/Errors';
 
 dotenv.config();
