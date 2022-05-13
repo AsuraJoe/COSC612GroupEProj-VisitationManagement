@@ -4,6 +4,6 @@
         "noImplicitAny": false,
         "target": "es6",
         "lib": ["es6"],
-        "moduleResolution": "nodenext"
+        "moduleResolution": "node12"
     }
 }
