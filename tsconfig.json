@@ -3,6 +3,11 @@
         "esModuleInterop": true,
         "noImplicitAny": false,
         "target": "es6",
-        "lib": ["es6"]
+        "lib": ["es6"],
+        "paths": {
+            "*": [
+              "node_modules/*"
+            ]
+        }
     }
 }
