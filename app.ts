@@ -7,7 +7,7 @@ dotenv.config()
 const app = ExpressDriver.build();
 const server = http.createServer(app);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.NODE_ENV === 'production' ?  process.env.PORT : 3000;
 
 server.listen(PORT,async () => {
     console.log(`VisitationAPI started at http://localhost:${ PORT }`);

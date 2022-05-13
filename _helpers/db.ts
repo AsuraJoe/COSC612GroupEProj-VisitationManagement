@@ -5,7 +5,7 @@ dotenv.config();
 /**
  * 
  */
-//Code for local database
+// local database
 const credentials = {
     user: process.env.DB_user,
     host: process.env.DB_host,
@@ -13,8 +13,9 @@ const credentials = {
     password: process.env.DB_pass,
     port: 5432,
 };
+const connectionString= process.env.DB_URI; //URI for remote server
 
-const pool = new Pool(credentials);
+const pool = new Pool({connectionString,});
 
 module.exports=pool;
 
