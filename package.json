@@ -5,7 +5,8 @@
   "main": "app.ts",
   "scripts": {
     "start": "node -r ts-node/register app.ts",
-    "test": "nodemon"
+    "test": "nodemon",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
