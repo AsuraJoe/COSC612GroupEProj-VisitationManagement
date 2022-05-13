@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.ts",
   "scripts": {
+    "start": "run",
     "test": "nodemon"
   },
   "repository": {
