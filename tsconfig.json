@@ -4,10 +4,6 @@
         "noImplicitAny": false,
         "target": "es6",
         "lib": ["es6"],
-        "paths": {
-            "*": [
-              "node_modules/*"
-            ]
-        }
+        "moduleResolution": "nodenext"
     }
 }

@@ -1,5 +1,5 @@
 import cors from "cors";
-import helmet from "helmet";
+const helmet = require('helmet');
 import express from "express";
 // import cookieParser from"cookie-parser";
 
