@@ -1,5 +1,5 @@
 const db = require('../_helpers/db');
-const visit = require('yesql')('/COSC612GroupEProj-VisitationManagement/SqlScripts/', {type: 'pg', useNullForMissing: true});
+const visit = process.env.NODE_ENV==='production'? require('yesql')('/ehrs-visit/SqlScripts/', {type: 'pg', useNullForMissing: true}): require('yesql')('/COSC612GroupEProj-VisitationManagement/SqlScripts/', {type: 'pg', useNullForMissing: true});
 //The visit module help load sql queries from folder SqlScript as the path suggested into functions
 
 module.exports= {
