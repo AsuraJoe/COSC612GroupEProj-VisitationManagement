@@ -1,8 +1,10 @@
 CREATE VIEW _queue 
 AS (
-SELECT v.visit_id as visit_id, p.patientid as patientid, CONCAT(p.firstname, ' ', p.middleinitial,' ', p.lastname) AS patient_name,
-v.visit_date AS visit_date, CONCAT(n.firstname, ' ', n.middleinitial,' ', n.lastname) AS nurse, 
-CONCAT(d.firstname, ' ', d.middleinitial,' ', d.lastname) AS doctor, v.status AS status
+SELECT v.visit_id as visit_id, p.patientid as patientid,
+REGEXP_REPLACE( CONCAT(p.firstname, ' ', p.middleinitial,' ', p.lastname), '[ ]+',' ') AS patient_name,
+v.visit_date AS visit_date, 
+REGEXP_REPLACE( CONCAT(n.firstname, ' ', n.middleinitial,' ', n.lastname), '[ ]+',' ' )AS nurse, 
+REGEXP_REPLACE(CONCAT(d.firstname, ' ', d.middleinitial,' ', d.lastname), '[ ]+',' ') AS doctor, v.status AS status
 FROM patient AS p JOIN 
 (
     SELECT * FROM visit WHERE visit_date IN (

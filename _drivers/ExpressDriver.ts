@@ -21,6 +21,7 @@ export class ExpressDriver{
         this.app.use('/queue', require('../queue/queue.controller'));
         this.app.use('/visit', require('../visit/visit.controller'));
         this.app.use('/vitals', require('../vitals/vitals.controller'));
+        this.app.use('/person', require('../person/person.controller'));
         this.initServer();
         return this.app;
 
