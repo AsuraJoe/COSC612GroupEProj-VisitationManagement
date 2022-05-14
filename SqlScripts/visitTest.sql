@@ -19,6 +19,6 @@ FROM (patient AS p JOIN
     FROM visit
     GROUP BY patientid )
 ) v ON p.patientid = v.patientid)
-JOIN employee AS n ON v.nurse_id = n.employeeid
--- INNER JOIN employee AS d ON v.doctor_id = d.employeeid
+LEFT OUTER JOIN employee AS n ON v.nurse_id = n.employeeid
+LEFT OUTER JOIN employee AS d ON v.doctor_id = d.employeeid
 ORDER BY visit_date DESC
