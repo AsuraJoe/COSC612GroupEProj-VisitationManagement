@@ -1,5 +1,5 @@
 const dbVitals = require('../_helpers/db');
-const vitals = process.env.NODE_ENV==='production'? require('yesql')('/ehrs-visit/SqlScripts/', {type: 'pg', useNullForMissing: true}): require('yesql')('/COSC612GroupEProj-VisitationManagement/SqlScripts/', {type: 'pg', useNullForMissing: true});
+const vitals = process.env.NODE_ENV==='production'? require('yesql')('/app/SqlScripts/', {type: 'pg', useNullForMissing: true}): require('yesql')('/COSC612GroupEProj-VisitationManagement/SqlScripts/', {type: 'pg', useNullForMissing: true});
 //The vitals module help load sql queries from folder SqlScript as the path suggested into functions
 
 module.exports= {
