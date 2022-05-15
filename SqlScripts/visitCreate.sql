@@ -59,13 +59,31 @@ CREATE TABLE IF NOT EXISTS diagnosis(
     FOREIGN KEY (created_by) REFERENCES employee(employeeid)
 );
 
--- CREATE TABLE IF NOT EXISTS visit_billing(
---     visit_billing_id serial PRIMARY KEY ,
---     visit_id INT NOT NULL,
---     patientid INT,
---     created_by INT,
---     cost FLOAT,
---     FOREIGN KEY (visit_id)
---     FOREIGN KEY (patientid) REFERENCES patient(patientid),
---     FOREIGN KEY (accountant_id) REFERENCES employee(employeeid)
--- );
+CREATE TABLE IF NOT EXISTS bill(
+    bill_id serial PRIMARY KEY ,
+    visit_id INT NOT NULL,
+    patientid uuid NOT NULL,
+    created_by uuid,
+    total FLOAT,
+    FOREIGN KEY (visit_id) REFERENCES visit(visit_id),
+    FOREIGN KEY (patientid) REFERENCES patient(patientid),
+    FOREIGN KEY (created_by) REFERENCES employee(employeeid)
+);
+
+CREATE TABLE IF NOT EXISTS treatment_bill(
+    bill_id INT NOT NULL,
+    treatmeant VARCHAR(70),
+    cost FLOAT,
+    paid BIT
+);
+
+CREATE TRIGGER addTotal AFTER INSERT ON treatment_bill 
+FOR EACH ROW
+$$
+BEGIN
+UPDATE bill AS b
+SET total = (
+    SELECT SUM(cost) from treatment_bill
+    WHERE treatment_bill.bill_id=b.bill_id)
+WHERE b.bill_id = new.bill_id;
+END;

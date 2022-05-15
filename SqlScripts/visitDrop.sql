@@ -1,6 +1,8 @@
 
-DROP TABLE IF EXISTS vitals;
-DROP TABLE IF EXISTS diagnosis;
+-- DROP TABLE IF EXISTS vitals;
+DROP TABLE IF EXISTS treatment_bill;
+DROP TABLE IF EXISTS bill;
+-- DROP TABLE IF EXISTS diagnosis;
 -- DROP TABLE IF EXISTS visit_billing;
 -- DROP TABLE IF EXISTS visit;
 -- DROP TABLE IF EXISTS patient;
