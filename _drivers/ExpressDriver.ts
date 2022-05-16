@@ -17,7 +17,7 @@ export class ExpressDriver{
         this.app.use(express.json());
         this.app.use(cors({ origin: true, credentials: true }))
         // this.app.use(cookieParser());
-        
+        this.app.use('/bill',  require('../bill/bill.controller'));
         this.app.use('/queue', require('../queue/queue.controller'));
         this.app.use('/visit', require('../visit/visit.controller'));
         this.app.use('/vitals', require('../vitals/vitals.controller'));

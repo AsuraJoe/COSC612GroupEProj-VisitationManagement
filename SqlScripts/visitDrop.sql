@@ -1,5 +1,5 @@
 
--- DROP TABLE IF EXISTS vitals;
+DROP TABLE IF EXISTS vitals;
 DROP TABLE IF EXISTS treatment_bill;
 DROP TABLE IF EXISTS bill;
 -- DROP TABLE IF EXISTS diagnosis;
