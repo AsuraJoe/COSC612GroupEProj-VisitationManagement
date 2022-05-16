@@ -6,6 +6,6 @@ module.exports= {
 
 //Funtion to get the queue
 async function getBill(id) {
-    const {rows} = await dbBill.query(`SELECT * FROM visit_billing WHERE visit_id = ${id}`);
+    const {rows} = await dbBill.query(`SELECT treatment, treatment_cost, quantity FROM visit_billing WHERE visit_id = ${id}`);
     return rows;
 }
