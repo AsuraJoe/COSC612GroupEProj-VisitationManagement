@@ -1,6 +1,6 @@
 CREATE VIEW _queue 
 AS (
-SELECT v.visit_id as visit_id, p.patientid as patientid,
+SELECT v.visit_id as visit_id, p.patientid as patientid, v.visit_reason as visit_reason,
 REGEXP_REPLACE( CONCAT(p.firstname, ' ', p.middleinitial,' ', p.lastname), '[ ]+',' ') AS patient_name,
 v.visit_date AS visit_date, 
 REGEXP_REPLACE( CONCAT(n.firstname, ' ', n.middleinitial,' ', n.lastname), '[ ]+',' ' )AS nurse, 
